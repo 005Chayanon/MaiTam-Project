@@ -9,80 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Sarabun', 'myFirstFont', sans-serif;
-            background-color: #f5f5f5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* ตกแต่งเส้นใต้ข้อความยินดีต้อนรับให้เหมือนต้นฉบับ */
-        .welcome-title {
-            display: inline-block;
-            border-bottom: 2px solid #333333;
-            padding-bottom: 6px;
-            color: #000000;
-        }
-
-        /* สไตล์การ์ดเมนู */
-        .menu-card {
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #333333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            height: 220px; /* เพิ่มความสูงเล็กน้อยเพื่อไม่ให้ภาพติดขอบ */
-        }
-
-        .menu-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-            transform: translateY(-5px);
-            color: #000000;
-        }
-
-        .menu-card img {
-            max-height: 110px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        /* ตกแต่งส่วนท้าย (Footer) */
-        footer {
-            background-color: #c2c2c2;
-            color: #ffffff;
-            padding: 12px 24px;
-        }
-    </style>
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
 
-    <header class="bg-white border-bottom shadow-sm px-4 py-3">
+    <header class="custom-header">
         <div class="d-flex align-items-center gap-3">
-            <div class="rounded-circle d-flex align-items-center justify-content-center text-white font-weight-bold" style="width: 60px; height: 60px; font-size: 11px; background-color: #8a1c14 !important;">
-                LOGO
-            </div>
+            <img src="img/new_logo_svc_temp.png" alt="โลโก้" class="header-logo" onerror="this.src='https://placehold.co/70x70/8a1c14/white?text=LOGO'">
             <div>
-                <h1 class="h4 mb-0 fw-bold text-dark">ระบบบันทึกและตรวจสอบโครงการ</h1>
-                <p class="mb-0 text-muted small">แผนกธุรกิจดิจิทัลและเทคโนโลยีสารสนเทศ</p>
+                <h1 class="h4 mb-0 fw-bold">ระบบบันทึกและตรวจสอบโครงการ</h1>
+                <p class="mb-0">แผนกธุรกิจดิจิทัลและเทคโนโลยีสารสนเทศ</p>
             </div>
         </div>
     </header>
@@ -92,27 +29,27 @@
             <h2 class="mb-2">
                 <span class="welcome-title">ยินดีต้อนรับเข้าสู่</span>
             </h2>
-            <h3 class="mt-3" style="color: #00a2e8 !important;">ระบบบันทึกและตรวจสอบโครงการ</h3>
+            <h3 class="mt-3" style="color: #42b6f5 !important; font-weight: 500;">ระบบบันทึกและตรวจสอบโครงการ</h3>
         </div>
 
         <div class="row g-4 justify-content-center" style="max-width: 850px; width: 100%;">
 
             <div class="col-10 col-sm-6">
-                <a href="admin/home.php" class="menu-card">
+                <a href="#" class="menu-card" data-bs-toggle="modal" data-bs-target="#adminModal">
                     <img src="img/home/1.png" alt="ผู้ดูแล">
                     <span class="fs-5 fw-medium">ผู้ดูแล</span>
                 </a>
             </div>
 
             <div class="col-10 col-sm-6">
-                <a href="#" class="menu-card">
+                <a href="#" class="menu-card" data-bs-toggle="modal" data-bs-target="#teacherModal">
                     <img src="img/home/2.png" alt="คุณครู">
                     <span class="fs-5 fw-medium">คุณครู</span>
                 </a>
             </div>
 
             <div class="col-10 col-sm-6">
-                <a href="#" class="menu-card">
+                <a href="#" class="menu-card" data-bs-toggle="modal" data-bs-target="#stdModal">
                     <img src="img/home/3.png" alt="นักเรียน/นักศึกษา">
                     <span class="fs-5 fw-medium">นักเรียน/นักศึกษา</span>
                 </a>
@@ -128,9 +65,90 @@
         </div>
     </main>
 
+    <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <h5 class="modal-title fw-bold" id="adminModalLabel">⚙️ เข้าสู่ระบบสำหรับผู้ดูแล</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label for="adminUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
+                            <input type="text" class="form-control custom-input" id="adminUsername" placeholder="กรอกชื่อผู้ใช้งาน">
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label custom-form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control custom-input" id="adminPassword" placeholder="กรอกรหัสผ่าน">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer p-3 border-0">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="teacherModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <h5 class="modal-title fw-bold" id="teacherModalLabel">👩‍🏫 เข้าสู่ระบบสำหรับครู</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label for="teacherUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
+                            <input type="text" class="form-control custom-input" id="teacherUsername" placeholder="กรอกชื่อผู้ใช้งาน">
+                        </div>
+                        <div class="mb-3">
+                            <label for="teacherPassword" class="form-label custom-form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control custom-input" id="teacherPassword" placeholder="กรอกรหัสผ่าน">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer p-3 border-0">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="stdModal" tabindex="-1" aria-labelledby="stdModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <h5 class="modal-title fw-bold" id="stdModalLabel">🎓 เข้าสู่ระบบสำหรับนักศึกษา</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form>
+                        <div class="mb-3">
+                            <label for="stdUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
+                            <input type="text" class="form-control custom-input" id="stdUsername" placeholder="กรอกชื่อผู้ใช้งาน">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stdPassword" class="form-label custom-form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control custom-input" id="stdPassword" placeholder="กรอกรหัสผ่าน">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer p-3 border-0">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <div class="container-fluid p-0">
-            <span>about me</span>
+        <div class="met-0 text-center ">
+            <span>&copy; 2026 ระบบบันทึกและตรวจสอบโครงการ ITSVC67</span>
         </div>
     </footer>
 
