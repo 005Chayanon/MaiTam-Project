@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 11, 2026 at 01:26 PM
+-- Generation Time: Jul 17, 2026 at 02:57 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -53,7 +53,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `username`, `password`, `full_name`, `status`) VALUES
-(0, 'admin', '$2y$10$asjJDM5HwpxtIONV9aJjseBQ3KTJBhE43EK8N15bRxGp9/NONqoAG', 'Max MKK', 1);
+(0, 'admin', 'admin', 'MaxMKK', 1);
 
 -- --------------------------------------------------------
 
@@ -156,7 +156,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `username`, `password`, `full_name`, `group_id`, `status`) VALUES
-(0, 'std', 'std', 'std', 1, 1);
+(0, 'std', '$2y$10$LgHBq/k8qXKOYWO6wt7lOOndTSUgk00slyqhwG1ofKx8OFBDn2V32', 'std', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `username`, `password`, `full_name`, `image`, `role`, `status`) VALUES
-(0, 'teachr', 'teachr', 'teachr', '', 0, 1);
+(0, 'teachr', '$2y$10$y6AXawrAC9lEUb9GL1qsCOaA7i04x81K8KTuuPTPMwOAyuYiftUj6', 'teachr', '', 0, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

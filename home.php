@@ -1,3 +1,9 @@
+<?php
+session_start();
+include 'config/db.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 
@@ -13,7 +19,6 @@
 </head>
 
 <body>
-
     <header class="custom-header">
         <div class="d-flex align-items-center gap-3">
             <img src="img/new_logo_svc_temp.png" alt="โลโก้" class="header-logo" onerror="this.src='https://placehold.co/70x70/8a1c14/white?text=LOGO'">
@@ -73,20 +78,24 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form>
+                    <form method="POST" action="config/login.php">
+                        <input type="hidden" name="role" value="admin">
+
                         <div class="mb-3">
                             <label for="adminUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
-                            <input type="text" class="form-control custom-input" id="adminUsername" placeholder="กรอกชื่อผู้ใช้งาน">
+                            <input type="text" class="form-control" id="adminUsername" name="username" placeholder="กรอกชื่อผู้ใช้งาน" autocomplete="username" required>
                         </div>
+
                         <div class="mb-3">
                             <label for="adminPassword" class="form-label custom-form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control custom-input" id="adminPassword" placeholder="กรอกรหัสผ่าน">
+                            <input type="password" class="form-control" id="adminPassword" name="password" placeholder="กรอกรหัสผ่าน" autocomplete="current-password" required>
+                        </div>
+
+                        <div class="modal-footer p-3 border-0">
+                            <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                            <button type="submit" name="login-admin" class="btn btn-submit">เข้าสู่ระบบ</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer p-3 border-0">
-                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
                 </div>
             </div>
         </div>
@@ -100,47 +109,24 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form>
+                    <form method="POST" action="config/login.php">
+                        <input type="hidden" name="role" value="teacher">
+
                         <div class="mb-3">
                             <label for="teacherUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
-                            <input type="text" class="form-control custom-input" id="teacherUsername" placeholder="กรอกชื่อผู้ใช้งาน">
+                            <input type="text" class="form-control" id="teacherUsername" name="username" placeholder="กรอกชื่อผู้ใช้งาน" autocomplete="username" required>
                         </div>
+
                         <div class="mb-3">
                             <label for="teacherPassword" class="form-label custom-form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control custom-input" id="teacherPassword" placeholder="กรอกรหัสผ่าน">
+                            <input type="password" class="form-control" id="teacherPassword" name="password" placeholder="กรอกรหัสผ่าน" autocomplete="current-password" required>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer p-3 border-0">
-                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="modal fade" id="stdModal" tabindex="-1" aria-labelledby="stdModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content custom-modal-content">
-                <div class="modal-header custom-modal-header">
-                    <h5 class="modal-title fw-bold" id="stdModalLabel">🎓 เข้าสู่ระบบสำหรับนักศึกษา</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <form>
-                        <div class="mb-3">
-                            <label for="stdUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
-                            <input type="text" class="form-control custom-input" id="stdUsername" placeholder="กรอกชื่อผู้ใช้งาน">
-                        </div>
-                        <div class="mb-3">
-                            <label for="stdPassword" class="form-label custom-form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control custom-input" id="stdPassword" placeholder="กรอกรหัสผ่าน">
+                        <div class="modal-footer p-3 border-0">
+                            <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                            <button type="submit" name="login-teacher" class="btn btn-submit">เข้าสู่ระบบ</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer p-3 border-0">
-                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
-                    <button type="button" class="btn btn-submit">เข้าสู่ระบบ</button>
                 </div>
             </div>
         </div>

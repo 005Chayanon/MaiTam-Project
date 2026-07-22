@@ -1,3 +1,13 @@
+<?php
+    include_once '../config/db.php';
+    session_start();
+
+    // Check if teacher is logged in
+    if (!isset($_SESSION['teacher_id'])) {
+        header("Location: ../home.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +20,8 @@
 </head>
 
 <body>
-    <h1>Admin Home</h1>
+    <h1>Teacher Home</h1>
+    <p>Welcome, <?php echo $_SESSION['full_name']; ?>!</p>
     <a href="../home.php">Back to Home</a>
     
 </body>
