@@ -1,0 +1,193 @@
+/* styles.css */
+
+/* เว้นระยะให้เนื้อหาหลักไม่ถูก Sidebar ทับ */
+.main-content {
+  margin-left: 360px;
+  /* สัมพันธ์กับความกว้างของ Sidebar (340px) + ระยะห่าง */
+  transition: margin-left 0.35s ease;
+}
+
+/* กรณี Sidebar ย่อ (Collapsed) */
+.sidebar.collapsed~.main-content {
+  margin-left: 84px;
+}
+
+.sidebar {
+  position: fixed;
+  width: 340px;
+  top: 24px;
+  left: 24px;
+  bottom: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgb(0 0 0 / 8%);
+  transition: width 0.35s ease;
+}
+
+.sidebar.collapsed {
+  width: 64px;
+}
+
+.sidebar-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 8px;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  margin-bottom: 16px;
+}
+
+.collapse-btn {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 11px;
+  background: #f5f5f7;
+  color: #6b6b73;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.collapse-btn:hover {
+  background: #eaeaec;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  margin-bottom: 16px;
+  border: 1px solid #c3c3c7;
+  border-radius: 13px;
+  color: #9b9ba3;
+}
+
+.search input::placeholder {
+  color: #9b9ba3;
+}
+
+.search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  color: #1c1c1e;
+}
+
+.nav {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 13px;
+  padding: 0 14px;
+  background: transparent;
+  color: #1c1c1e;
+  text-align: left;
+  transition: background 0.2s;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav button:hover {
+  background: #f5f5f7;
+}
+
+.nav button.active {
+  background: #f5f5f7;
+}
+
+.divider {
+  height: 1px;
+  border: 0;
+  margin: 10px 4px 14px;
+  background: #ebebef;
+}
+
+.theme-toggle {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 14px;
+  color: #9b9ba3;
+}
+
+.switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #3a3a4d;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.switch.on {
+  background: #f5a623;
+}
+
+.switch span {
+  position: absolute;
+  top: 3px;
+  left: 27px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 25%);
+  transition: left 0.25s;
+}
+
+.switch.on span {
+  left: 3px;
+}
+
+.theme-toggle .lucide:first-child {
+  color: #f5a623;
+}
+
+body.dark .theme-toggle .lucide:first-child {
+  color: #6f6f79;
+}
+
+body.dark .theme-toggle .lucide:last-child {
+  color: #f0f0f4;
+}

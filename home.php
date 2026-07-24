@@ -78,7 +78,7 @@ include 'config/db.php';
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form method="POST" action="config/login.php">
+                    <form method="POST" action="admin/config/login.php">
                         <input type="hidden" name="role" value="admin">
 
                         <div class="mb-3">
@@ -109,7 +109,7 @@ include 'config/db.php';
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form method="POST" action="config/login.php">
+                    <form method="POST" action="teacher/config/login.php">
                         <input type="hidden" name="role" value="teacher">
 
                         <div class="mb-3">
@@ -125,6 +125,37 @@ include 'config/db.php';
                         <div class="modal-footer p-3 border-0">
                             <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
                             <button type="submit" name="login-teacher" class="btn btn-submit">เข้าสู่ระบบ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="stdModal" tabindex="-1" aria-labelledby="stdModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal-content">
+                <div class="modal-header custom-modal-header">
+                    <h5 class="modal-title fw-bold" id="stdModalLabel">👩‍🎓 เข้าสู่ระบบสำหรับนักเรียน</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form method="POST" action="std/config/login.php">
+                        <input type="hidden" name="role" value="std">
+
+                        <div class="mb-3">
+                            <label for="stdUsername" class="form-label custom-form-label">ชื่อผู้ใช้งาน</label>
+                            <input type="text" class="form-control" id="stdUsername" name="username" placeholder="กรอกชื่อผู้ใช้งาน" autocomplete="username" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stdPassword" class="form-label custom-form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control" id="stdPassword" name="password" placeholder="กรอกรหัสผ่าน" autocomplete="current-password" required>
+                        </div>
+
+                        <div class="modal-footer p-3 border-0">
+                            <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">ยกเลิก</button>
+                            <button type="submit" name="login-std" class="btn btn-submit">เข้าสู่ระบบ</button>
                         </div>
                     </form>
                 </div>

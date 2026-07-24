@@ -2,8 +2,8 @@
     include_once '../../config/db.php';
     session_start();
 
-    // Check if student is logged in
-    if (!isset($_SESSION['student_id'])) {
+    // Check if teacher is logged in
+    if (!isset($_SESSION['teacher_id'])) {
         header("Location: ../../home.php");
         exit();
     }
@@ -20,9 +20,9 @@
 </head>
 
 <body>
-    <h1>Student Home</h1>
+    <h1>Head of Department Home</h1>
     <p>Welcome, <?php echo $_SESSION['full_name']; ?>!</p>
-    <a href="../home.php">Back to Home</a>
+    <a href="../../home.php">Back to Home</a>
     
 </body>
 
