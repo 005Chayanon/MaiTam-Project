@@ -19,8 +19,8 @@ if (!isset($_SESSION['admin_id'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="nav.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
@@ -35,10 +35,55 @@ if (!isset($_SESSION['admin_id'])) {
         </div>
     </header>
 
-    <h1>Admin Home</h1>
-    <p>Welcome, <?php echo $_SESSION['full_name']; ?>!</p>
-    <a href="../home.php">Back to Home</a>
+    <div class="app-layout">
+        <nav>
+            <aside class="sidebar collapsed" id="sidebar">
+                <div class="sidebar-inner">
+                    <header class="sidebar-header">
+                        <button type="button" class="collapse-btn" id="collapseBtn">
+                            <i data-lucide="panel-left"></i>
+                        </button>
+                    </header>
 
+                    <ul class="nav">
+                        <li>
+                            <button type="button" class="active">
+                                <i data-lucide="house"></i>
+                                <span>Dashboard</span>
+                            </button>
+                        </li>
+                        <!-- more items -->
+                    </ul>
+
+                    <hr class="divider" />
+
+                    <ul class="nav apps">
+                        <li>
+                            <button type="button">
+                                <img src="framer.svg" />
+                                <span>Framer</span>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="logout-box">
+                        <button type="button" class="logout-btn" id="logoutBtn">
+                            <i data-lucide="log-out"></i>
+                            <span>ออกจากระบบ</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </nav>
+
+        <main class="main-content">
+            <h1>Admin Home</h1>
+            <p>Welcome, <?php echo $_SESSION['full_name']; ?>!</p>
+            <a href="../home.php">Back to Home</a>
+        </main>
+    </div>
+
+    <script src="nav.js"></script>
 </body>
 
 </html>

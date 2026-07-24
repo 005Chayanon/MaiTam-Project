@@ -1,31 +1,58 @@
-/* styles.css */
-
-/* เว้นระยะให้เนื้อหาหลักไม่ถูก Sidebar ทับ */
-.main-content {
-  margin-left: 360px;
-  /* สัมพันธ์กับความกว้างของ Sidebar (340px) + ระยะห่าง */
-  transition: margin-left 0.35s ease;
-}
-
-/* กรณี Sidebar ย่อ (Collapsed) */
-.sidebar.collapsed~.main-content {
-  margin-left: 84px;
-}
-
 .sidebar {
-  position: fixed;
-  width: 340px;
+  position: sticky;
   top: 24px;
-  left: 24px;
-  bottom: 32px;
+  flex: 0 0 340px;
+  width: 340px;
+  height: 85vh;
+  overflow: hidden;
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgb(0 0 0 / 8%);
-  transition: width 0.35s ease;
+  transition: flex-basis 0.35s ease, width 0.35s ease;
 }
 
 .sidebar.collapsed {
+  flex-basis: 64px;
   width: 64px;
+}
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-header img {
+  display: none;
+}
+
+.sidebar.collapsed .search {
+  justify-content: center;
+  padding: 0;
+  border-color: transparent;
+}
+
+.sidebar.collapsed .search input,
+.sidebar.collapsed .search .kbd {
+  display: none;
+}
+
+.sidebar.collapsed .nav button {
+  justify-content: center;
+  padding: 0;
+  gap: 0;
+}
+
+.sidebar.collapsed .nav button span {
+  display: none;
+}
+
+.sidebar.collapsed .logout-btn {
+  justify-content: center;
+  padding: 0;
+  gap: 0;
+}
+
+.sidebar.collapsed .logout-btn span {
+  display: none;
 }
 
 .sidebar-inner {
@@ -39,16 +66,23 @@
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   min-height: 34px;
   margin-bottom: 16px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1c1e;
+}
+
 .collapse-btn {
-  position: absolute;
-  top: 12px;
-  right: 8px;
+  order: -1;
   display: grid;
   place-items: center;
   flex: 0 0 auto;
@@ -137,57 +171,29 @@
   background: #ebebef;
 }
 
-.theme-toggle {
+.logout-box {
   margin-top: auto;
+  padding-top: 14px;
+}
+
+.logout-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding-top: 14px;
-  color: #9b9ba3;
-}
-
-.switch {
-  position: relative;
-  flex: 0 0 auto;
-  width: 52px;
-  height: 28px;
-  padding: 0;
+  gap: 14px;
+  width: 100%;
+  height: 48px;
   border: 0;
-  border-radius: 999px;
-  background: #3a3a4d;
+  border-radius: 13px;
+  padding: 0 14px;
+  background: transparent;
+  color: #d64545;
+  text-align: left;
   cursor: pointer;
-  transition: background 0.25s;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: background 0.2s;
 }
 
-.switch.on {
-  background: #f5a623;
-}
-
-.switch span {
-  position: absolute;
-  top: 3px;
-  left: 27px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 25%);
-  transition: left 0.25s;
-}
-
-.switch.on span {
-  left: 3px;
-}
-
-.theme-toggle .lucide:first-child {
-  color: #f5a623;
-}
-
-body.dark .theme-toggle .lucide:first-child {
-  color: #6f6f79;
-}
-
-body.dark .theme-toggle .lucide:last-child {
-  color: #f0f0f4;
+.logout-btn:hover {
+  background: #fdecec;
 }
