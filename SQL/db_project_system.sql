@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2026 at 02:57 PM
+-- Generation Time: Jul 24, 2026 at 01:28 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -156,7 +156,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `username`, `password`, `full_name`, `group_id`, `status`) VALUES
-(0, 'std', '$2y$10$LgHBq/k8qXKOYWO6wt7lOOndTSUgk00slyqhwG1ofKx8OFBDn2V32', 'std', 1, 1);
+(0, '67219010005', 'k.nn_max0657514328', 'MaxMKK', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,8 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`teacher_id`, `username`, `password`, `full_name`, `image`, `role`, `status`) VALUES
-(0, 'teachr', '$2y$10$y6AXawrAC9lEUb9GL1qsCOaA7i04x81K8KTuuPTPMwOAyuYiftUj6', 'teachr', '', 0, 1);
+(0, 'teachr', 'teachr', 'MKK', '', 0, 1),
+(0, 'MKK', 'MKK', 'Tc', '', 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
