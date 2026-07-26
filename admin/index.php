@@ -45,6 +45,12 @@ if (!isset($_SESSION['admin_id'])) {
                         </button>
                     </header>
 
+                    <div class="search">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Search" />
+                        <span class="kbd"></span>
+                    </div>
+
                     <ul class="nav">
                         <li>
                             <button type="button" class="active">
@@ -52,22 +58,19 @@ if (!isset($_SESSION['admin_id'])) {
                                 <span>Dashboard</span>
                             </button>
                         </li>
+                        <li>
+                            <button type="button" id="projectsBtn">
+                                <i data-lucide="file-text"></i>
+                                <span>Projects</span>
+                            </button>
+                        </li>
                         <!-- more items -->
                     </ul>
 
                     <hr class="divider" />
 
-                    <ul class="nav apps">
-                        <li>
-                            <button type="button">
-                                <img src="framer.svg" />
-                                <span>Framer</span>
-                            </button>
-                        </li>
-                    </ul>
-
                     <div class="logout-box">
-                        <button type="button" class="logout-btn" id="logoutBtn">
+                        <button type="button" class="logout-btn" id="logoutBtn" name="logout">
                             <i data-lucide="log-out"></i>
                             <span>ออกจากระบบ</span>
                         </button>

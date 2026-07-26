@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       if (confirm("ต้องการออกจากระบบใช่หรือไม่?")) {
-        window.location.href = "config/logout.php?logout=1";
+        window.location.href = "../config/logout.php?logout=1";
       }
     });
   }
