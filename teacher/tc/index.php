@@ -45,11 +45,11 @@ if (!isset($_SESSION['teacher_id'])) {
                         </button>
                     </header>
 
-                    <div class="search">
+                <!--<div class="search">
                         <i data-lucide="search"></i>
                         <input type="text" placeholder="Search" />
                         <span class="kbd"></span>
-                    </div>
+                    </div> -->
 
                     <ul class="nav">
                         <li>
