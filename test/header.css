@@ -6,7 +6,7 @@ body {
     flex-direction: column;
 }
 
-/* สไตล์สำหรับ Header ใหม่ (ไล่สีฟ้า-น้ำเงิน) */
+/* สไตล์สำหรับ Header (ไล่สีฟ้า-น้ำเงิน) */
 .custom-header {
     background: linear-gradient(180deg, #5eb2ff 0%, #c4e4ff 100%);
     padding: 15px 25px;
@@ -18,15 +18,14 @@ body {
 .custom-header p {
     color: #ffffff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
-    /* เพิ่มเงาให้ตัวหนังสืออ่านง่ายขึ้น */
 }
 
-/* พื้นที่ด้านล่าง header: sidebar + เนื้อหาหลัก เรียงกันแบบ flex
-   ทำให้เนื้อหาหลักไม่ถูก sidebar ทับ และขยับตามเมื่อ sidebar ถูกย่อ */
+/* พื้นที่ด้านล่าง header: sidebar + เนื้อหาหลัก */
 .app-layout {
     flex: 1 1 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
+    /*  แก้ไขจาก flex-start เป็น stretch เพื่อยืดความสูงเต็มจอ */
     gap: 24px;
     padding: 24px;
 }
@@ -35,6 +34,7 @@ body {
     flex: 0 0 auto;
 }
 
+/* กล่องเนื้อหาหลัก (จะยืดเต็มความสูงที่เหลือทันที) */
 .main-content {
     flex: 1 1 auto;
     min-width: 0;
@@ -42,6 +42,10 @@ body {
     border-radius: 16px;
     box-shadow: 0 20px 50px rgb(0 0 0 / 8%);
     padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* สไตล์โลโก้วงกลม */
@@ -54,73 +58,61 @@ body {
     border: 2px solid #a71e16;
 }
 
-.content {
-    flex: 1;
-    padding: 18px 18px 30px;
+/* กรอบขอบสีขาวชั้นนอก */
+.stat-card {
+    background-color: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 12px;
+    padding: 8px;
+    /* ระยะห่างระหว่างขอบขาวกับกล่องสีฟ้า */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.row {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 14px;
+/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ (Optional) */
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.card {
-    flex: 1;
-    background: linear-gradient(180deg, #6cc3f0 0%, #4aa8dc 100%);
-    border-radius: 4px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    padding: 10px 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 62px;
-    position: relative;
-}
-
-.card .top-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.card .label {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.card .count {
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.card .sub {
-    font-size: 10px;
-    font-weight: 300;
-    opacity: 0.9;
-    margin-top: 2px;
-}
-
-.full-row {
-    display: flex;
-}
-
-.full-card {
-    flex: 1;
-    background: linear-gradient(180deg, #6cc3f0 0%, #4aa8dc 100%);
-    border-radius: 4px;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    padding: 12px 18px;
+/* กล่องสีฟ้าชั้นใน */
+.stat-card-inner {
+    background-color: #5bb2e8;
+    /* สีฟ้าสว่างตามรูปภาพ */
+    border-radius: 8px;
+    padding: 18px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
-    font-weight: 500;
+    color: #ffffff;
 }
 
-.full-card .count {
-    font-size: 20px;
+/* ข้อความฝั่งซ้าย */
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-title {
+    font-size: 1.25rem;
     font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+}
+
+.stat-subtitle {
+    font-size: 0.85rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+/* ตัวเลขฝั่งขวา */
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+    padding-left: 12px;
 }

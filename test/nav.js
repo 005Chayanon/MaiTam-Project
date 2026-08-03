@@ -1,5 +1,3 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.querySelector(".sidebar");
   const collapseBtn = document.getElementById("collapseBtn");
@@ -24,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
       if (confirm("ต้องการออกจากระบบใช่หรือไม่?")) {
-        window.location.href = "../logout.php";
+        window.location.href = "config/logout.php?logout=1";
       }
     });
   }
@@ -33,3 +31,4 @@ document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
   }
 });
+

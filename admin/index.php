@@ -45,7 +45,7 @@ if (!isset($_SESSION['admin_id'])) {
                         </button>
                     </header>
 
-                <!--<div class="search">
+                    <!--<div class="search">
                         <i data-lucide="search"></i>
                         <input type="text" placeholder="Search" />
                         <span class="kbd"></span>
@@ -53,18 +53,17 @@ if (!isset($_SESSION['admin_id'])) {
 
                     <ul class="nav">
                         <li>
-                            <button type="button" class="active">
+                            <a href="index.php" class="active" id="homeBtn">
                                 <i data-lucide="house"></i>
-                                <span>Dashboard</span>
-                            </button>
+                                <span>Home</span>
+                            </a>
                         </li>
                         <li>
-                            <button type="button" id="projectsBtn">
+                            <a href="Projects.php" id="projectsBtn">
                                 <i data-lucide="file-text"></i>
                                 <span>Projects</span>
-                            </button>
+                            </a>
                         </li>
-                        <!-- more items -->
                     </ul>
 
                     <hr class="divider" />
@@ -80,9 +79,90 @@ if (!isset($_SESSION['admin_id'])) {
         </nav>
 
         <main class="main-content">
-            <h1>Admin Home</h1>
-            <p>Welcome, <?php echo $_SESSION['full_name']; ?>!</p>
-            <a href="../home.php">Back to Home</a>
+            <!-- ครอบด้วย div และตั้ง max-width พร้อม margin: 0 auto (mx-auto) -->
+            <div class="mx-auto w-100" style="max-width: 1000px;">
+                <div class="row g-3">
+                    <div class="row g-3">
+                        <!-- การ์ดที่ 1: คุณครู -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">คุณครู</h3>
+                                        <p class="stat-subtitle">คุณครูทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">5</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 2: กลุ่มนักเรียน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">กลุ่มนักเรียน</h3>
+                                        <p class="stat-subtitle">กลุ่มนักเรียนทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">3</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 3: แอดมิน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">แอดมิน</h3>
+                                        <p class="stat-subtitle">แอดมินทั้งหมด</p>
+                                    </div>
+                                    <div class="stat-number">1</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 4: สาขาวิชา -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">สาขาวิชา</h3>
+                                        <p class="stat-subtitle">สาขาวิชาทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 5: ห้องเรียน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">ห้องเรียน</h3>
+                                        <p class="stat-subtitle">ห้องเรียนทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">4</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 6: หัวข้องาน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">หัวข้องาน</h3>
+                                        <p class="stat-subtitle">หัวข้องานทั้งหมด</p>
+                                    </div>
+                                    <div class="stat-number">6</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 

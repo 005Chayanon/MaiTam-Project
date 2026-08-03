@@ -45,32 +45,31 @@ if (!isset($_SESSION['admin_id'])) {
                         </button>
                     </header>
 
-                    <div class="search">
+                    <!--<div class="search">
                         <i data-lucide="search"></i>
                         <input type="text" placeholder="Search" />
                         <span class="kbd"></span>
-                    </div>
+                    </div> -->
 
                     <ul class="nav">
                         <li>
-                            <button type="button" class="active">
+                            <a href="index.php" class="active" id="homeBtn">
                                 <i data-lucide="house"></i>
-                                <span>Dashboard</span>
-                            </button>
+                                <span>Home</span>
+                            </a>
                         </li>
                         <li>
-                            <button type="button" id="projectsBtn">
+                            <a href="Projects.php" id="projectsBtn">
                                 <i data-lucide="file-text"></i>
                                 <span>Projects</span>
-                            </button>
+                            </a>
                         </li>
-                        <!-- more items -->
                     </ul>
 
                     <hr class="divider" />
 
                     <div class="logout-box">
-                        <button type="button" class="logout-btn" id="logoutBtn">
+                        <button type="button" class="logout-btn" id="logoutBtn" name="logout">
                             <i data-lucide="log-out"></i>
                             <span>ออกจากระบบ</span>
                         </button>
@@ -80,59 +79,87 @@ if (!isset($_SESSION['admin_id'])) {
         </nav>
 
         <main class="main-content">
-            <div class="content">
-                <div class="row">
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">คุณครู</span>
-                            <span class="count">5</span>
+            <!-- ครอบด้วย div และตั้ง max-width พร้อม margin: 0 auto (mx-auto) -->
+            <div class="mx-auto w-100" style="max-width: 1000px;">
+                <div class="row g-3">
+                    <div class="row g-3">
+                        <!-- การ์ดที่ 1: คุณครู -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">คุณครู</h3>
+                                        <p class="stat-subtitle">คุณครูทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">5</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sub">คุณครูทั้งหมดในแผนก</div>
-                    </div>
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">กลุ่มนักเรียน</span>
-                            <span class="count">3</span>
-                        </div>
-                        <div class="sub">กลุ่มนักเรียนทั้งหมดในแผนก</div>
-                    </div>
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">แอดมิน</span>
-                            <span class="count">1</span>
-                        </div>
-                        <div class="sub">แอดมินทั้งหมด</div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">สาขาวิชา</span>
-                            <span class="count">2</span>
+                        <!-- การ์ดที่ 2: กลุ่มนักเรียน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">กลุ่มนักเรียน</h3>
+                                        <p class="stat-subtitle">กลุ่มนักเรียนทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">3</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sub">สาขาวิชาทั้งหมดในแผนก</div>
-                    </div>
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">ห้องเรียน</span>
-                            <span class="count">4</span>
-                        </div>
-                        <div class="sub">ห้องเรียนทั้งหมดในแผนก</div>
-                    </div>
-                    <div class="card">
-                        <div class="top-line">
-                            <span class="label">หัวข้องาน</span>
-                            <span class="count">6</span>
-                        </div>
-                        <div class="sub">หัวข้องานทั้งหมด</div>
-                    </div>
-                </div>
 
-                <div class="full-row">
-                    <div class="full-card">
-                        <span>ปีการศึกษา</span>
-                        <span class="count">2</span>
+                        <!-- การ์ดที่ 3: แอดมิน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">แอดมิน</h3>
+                                        <p class="stat-subtitle">แอดมินทั้งหมด</p>
+                                    </div>
+                                    <div class="stat-number">1</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 4: สาขาวิชา -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">สาขาวิชา</h3>
+                                        <p class="stat-subtitle">สาขาวิชาทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 5: ห้องเรียน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">ห้องเรียน</h3>
+                                        <p class="stat-subtitle">ห้องเรียนทั้งหมดในแผนก</p>
+                                    </div>
+                                    <div class="stat-number">4</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- การ์ดที่ 6: หัวข้องาน -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="stat-card">
+                                <div class="stat-card-inner">
+                                    <div class="stat-info">
+                                        <h3 class="stat-title">หัวข้องาน</h3>
+                                        <p class="stat-subtitle">หัวข้องานทั้งหมด</p>
+                                    </div>
+                                    <div class="stat-number">6</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
