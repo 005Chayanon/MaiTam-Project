@@ -4,6 +4,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
 
 /* สไตล์สำหรับ Header (ไล่สีฟ้า-น้ำเงิน) */
@@ -25,7 +27,6 @@ body {
     flex: 1 1 auto;
     display: flex;
     align-items: stretch;
-    /*  แก้ไขจาก flex-start เป็น stretch เพื่อยืดความสูงเต็มจอ */
     gap: 24px;
     padding: 24px;
 }
@@ -34,18 +35,14 @@ body {
     flex: 0 0 auto;
 }
 
-/* กล่องเนื้อหาหลัก (จะยืดเต็มความสูงที่เหลือทันที) */
+/* กล่องเนื้อหาหลัก */
 .main-content {
     flex: 1 1 auto;
     min-width: 0;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgb(0 0 0 / 8%);
-    padding: 24px;
+    padding: 30px 40px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 /* สไตล์โลโก้วงกลม */
@@ -61,48 +58,47 @@ body {
 /* กรอบขอบสีขาวชั้นนอก */
 .stat-card {
     background-color: #ffffff;
-    border: 1px solid #c8c8c8;
+    border: 1px solid #dcdcdc;
     border-radius: 12px;
-    padding: 8px;
-    /* ระยะห่างระหว่างขอบขาวกับกล่องสีฟ้า */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
 }
 
-/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ (Optional) */
 .stat-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* กล่องสีฟ้าชั้นใน */
 .stat-card-inner {
-    background-color: #5bb2e8;
-    /* สีฟ้าสว่างตามรูปภาพ */
+    background: linear-gradient(135deg, #6ec1e4 0%, #3e8cd0 100%);
     border-radius: 8px;
-    padding: 18px 20px;
+    padding: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #ffffff;
+    height: 100%;
 }
 
 /* ข้อความฝั่งซ้าย */
 .stat-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .stat-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
     color: #ffffff;
 }
 
 .stat-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     margin: 0;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 400;
@@ -110,7 +106,7 @@ body {
 
 /* ตัวเลขฝั่งขวา */
 .stat-number {
-    font-size: 2.2rem;
+    font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
     color: #ffffff;

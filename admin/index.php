@@ -7,6 +7,30 @@ if (!isset($_SESSION['admin_id'])) {
     header("Location: ../home.php");
     exit();
 }
+
+// Fetch counts
+$counts = [
+    'teachers' => 0,
+    'groups' => 0,
+    'admins' => 0,
+    'branches' => 0,
+    'classrooms' => 0,
+    'assignments' => 0,
+    'years' => 0
+];
+
+try {
+    $counts['teachers'] = $pdo->query("SELECT COUNT(*) FROM `teachers`")->fetchColumn();
+    $counts['groups'] = $pdo->query("SELECT COUNT(*) FROM `groups`")->fetchColumn();
+    $counts['admins'] = $pdo->query("SELECT COUNT(*) FROM `admins`")->fetchColumn();
+    $counts['branches'] = $pdo->query("SELECT COUNT(*) FROM `branches`")->fetchColumn();
+    $counts['classrooms'] = $pdo->query("SELECT COUNT(*) FROM `classrooms`")->fetchColumn();
+    $counts['assignments'] = $pdo->query("SELECT COUNT(*) FROM `assignments`")->fetchColumn();
+    $counts['years'] = $pdo->query("SELECT COUNT(*) FROM `academic_years`")->fetchColumn();
+    $counts['students'] = $pdo->query("SELECT COUNT(*) FROM `students`")->fetchColumn();
+} catch (PDOException $e) {
+    // Keep zeros if error
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +38,7 @@ if (!isset($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ระบบผู้ดูแล - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,139 +49,106 @@ if (!isset($_SESSION['admin_id'])) {
 </head>
 
 <body>
-    <header class="custom-header">
-        <div class="d-flex align-items-center gap-3">
-            <img src="../img/new_logo_svc_temp.png" alt="โลโก้" class="header-logo" onerror="this.src='https://placehold.co/70x70/8a1c14/white?text=LOGO'">
-            <div>
-                <h1 class="h4 mb-0 fw-bold">ระบบบันทึกและตรวจสอบโครงการ</h1>
-                <p class="mb-0">แผนกธุรกิจดิจิทัลและเทคโนโลยีสารสนเทศ</p>
-            </div>
-        </div>
-    </header>
+    <?php include 'includes/header.php'; ?>
 
     <div class="app-layout">
-        <nav>
-            <aside class="sidebar collapsed" id="sidebar">
-                <div class="sidebar-inner">
-                    <header class="sidebar-header">
-                        <button type="button" class="collapse-btn" id="collapseBtn">
-                            <i data-lucide="panel-left"></i>
-                        </button>
-                    </header>
-
-                    <!--<div class="search">
-                        <i data-lucide="search"></i>
-                        <input type="text" placeholder="Search" />
-                        <span class="kbd"></span>
-                    </div> -->
-
-                    <ul class="nav">
-                        <li>
-                            <a href="index.php" class="active" id="homeBtn">
-                                <i data-lucide="house"></i>
-                                <span>Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Projects.php" id="projectsBtn">
-                                <i data-lucide="file-text"></i>
-                                <span>Projects</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <hr class="divider" />
-
-                    <div class="logout-box">
-                        <button type="button" class="logout-btn" id="logoutBtn" name="logout">
-                            <i data-lucide="log-out"></i>
-                            <span>ออกจากระบบ</span>
-                        </button>
-                    </div>
-                </div>
-            </aside>
-        </nav>
+        <?php include 'includes/sidebar.php'; ?>
 
         <main class="main-content">
-            <!-- ครอบด้วย div และตั้ง max-width พร้อม margin: 0 auto (mx-auto) -->
-            <div class="mx-auto w-100" style="max-width: 1000px;">
-                <div class="row g-3">
-                    <div class="row g-3">
-                        <!-- การ์ดที่ 1: คุณครู -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">คุณครู</h3>
-                                        <p class="stat-subtitle">คุณครูทั้งหมดในแผนก</p>
-                                    </div>
-                                    <div class="stat-number">5</div>
+            <div class="mx-auto w-100" style="padding-top: 1rem;">
+                <div class="row g-4">
+                    <!-- แถวที่ 1: ครู, แอดมิน, ปีการศึกษา -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">คุณครู</h3>
+                                    <p class="stat-subtitle">คุณครูทั้งหมดในแผนก</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['teachers'] ?></div>
                             </div>
                         </div>
-
-                        <!-- การ์ดที่ 2: กลุ่มนักเรียน -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">กลุ่มนักเรียน</h3>
-                                        <p class="stat-subtitle">กลุ่มนักเรียนทั้งหมดในแผนก</p>
-                                    </div>
-                                    <div class="stat-number">3</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">แอดมิน</h3>
+                                    <p class="stat-subtitle">แอดมินทั้งหมด</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['admins'] ?></div>
                             </div>
                         </div>
-
-                        <!-- การ์ดที่ 3: แอดมิน -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">แอดมิน</h3>
-                                        <p class="stat-subtitle">แอดมินทั้งหมด</p>
-                                    </div>
-                                    <div class="stat-number">1</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">ปีการศึกษา</h3>
+                                    <p class="stat-subtitle">ปีการศึกษาทั้งหมด</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['years'] ?></div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- การ์ดที่ 4: สาขาวิชา -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">สาขาวิชา</h3>
-                                        <p class="stat-subtitle">สาขาวิชาทั้งหมดในแผนก</p>
-                                    </div>
-                                    <div class="stat-number">2</div>
+                    <!-- แถวที่ 2: สาขาวิชา, ห้องเรียน, หัวข้องาน -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">สาขาวิชา</h3>
+                                    <p class="stat-subtitle">สาขาวิชาทั้งหมดในแผนก</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['branches'] ?></div>
                             </div>
                         </div>
-
-                        <!-- การ์ดที่ 5: ห้องเรียน -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">ห้องเรียน</h3>
-                                        <p class="stat-subtitle">ห้องเรียนทั้งหมดในแผนก</p>
-                                    </div>
-                                    <div class="stat-number">4</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">ห้องเรียน</h3>
+                                    <p class="stat-subtitle">ห้องเรียนทั้งหมดในแผนก</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['classrooms'] ?></div>
                             </div>
                         </div>
-
-                        <!-- การ์ดที่ 6: หัวข้องาน -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="stat-card">
-                                <div class="stat-card-inner">
-                                    <div class="stat-info">
-                                        <h3 class="stat-title">หัวข้องาน</h3>
-                                        <p class="stat-subtitle">หัวข้องานทั้งหมด</p>
-                                    </div>
-                                    <div class="stat-number">6</div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">หัวข้องาน</h3>
+                                    <p class="stat-subtitle">หัวข้องานทั้งหมด</p>
                                 </div>
+                                <div class="stat-number"><?= $counts['assignments'] ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- แถวที่ 3: กลุ่มนักเรียน, นักเรียน (จัดให้อยู่กึ่งกลาง) -->
+                <div class="row g-4 justify-content-center mt-0">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">กลุ่มนักเรียน</h3>
+                                    <p class="stat-subtitle">กลุ่มนักเรียนทั้งหมดในแผนก</p>
+                                </div>
+                                <div class="stat-number"><?= $counts['groups'] ?></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="stat-card">
+                            <div class="stat-card-inner">
+                                <div class="stat-info">
+                                    <h3 class="stat-title">นักเรียน</h3>
+                                    <p class="stat-subtitle">นักเรียนทั้งหมดในแผนก</p>
+                                </div>
+                                <div class="stat-number"><?= $counts['students'] ?? 0 ?></div>
                             </div>
                         </div>
                     </div>
@@ -167,6 +158,9 @@ if (!isset($_SESSION['admin_id'])) {
     </div>
 
     <script src="nav.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

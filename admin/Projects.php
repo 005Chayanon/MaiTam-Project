@@ -3,10 +3,10 @@ include_once '../config/db.php';
 session_start();
 
 // Check if admin is logged in
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: ../home.php");
-    exit();
-}
+// if (!isset($_SESSION['admin_id'])) {
+//     header("Location: ../home.php");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ระบบผู้ดูแล - Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,65 +25,23 @@ if (!isset($_SESSION['admin_id'])) {
 </head>
 
 <body>
-    <header class="custom-header">
-        <div class="d-flex align-items-center gap-3">
-            <img src="../img/new_logo_svc_temp.png" alt="โลโก้" class="header-logo" onerror="this.src='https://placehold.co/70x70/8a1c14/white?text=LOGO'">
-            <div>
-                <h1 class="h4 mb-0 fw-bold">ระบบบันทึกและตรวจสอบโครงการ</h1>
-                <p class="mb-0">แผนกธุรกิจดิจิทัลและเทคโนโลยีสารสนเทศ</p>
-            </div>
-        </div>
-    </header>
+    <?php include 'includes/header.php'; ?>
 
     <div class="app-layout">
-        <nav>
-            <aside class="sidebar collapsed" id="sidebar">
-                <div class="sidebar-inner">
-                    <header class="sidebar-header">
-                        <button type="button" class="collapse-btn" id="collapseBtn">
-                            <i data-lucide="panel-left"></i>
-                        </button>
-                    </header>
-
-                    <!--<div class="search">
-                        <i data-lucide="search"></i>
-                        <input type="text" placeholder="Search" />
-                        <span class="kbd"></span>
-                    </div> -->
-
-                    <ul class="nav">
-                        <li>
-                            <a href="index.php" class="active" id="homeBtn">
-                                <i data-lucide="house"></i>
-                                <span>Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="Projects.php" id="projectsBtn">
-                                <i data-lucide="file-text"></i>
-                                <span>Projects</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <hr class="divider" />
-
-                    <div class="logout-box">
-                        <button type="button" class="logout-btn" id="logoutBtn" name="logout">
-                            <i data-lucide="log-out"></i>
-                            <span>ออกจากระบบ</span>
-                        </button>
-                    </div>
-                </div>
-            </aside>
-        </nav>
+        <?php include 'includes/sidebar.php'; ?>
 
         <main class="main-content">
-            
+            <div class="mx-auto w-100" style="max-width: 1000px; padding-top: 2rem;">
+                <!-- Content for Projects goes here -->
+                <h3>จัดการโครงงาน</h3>
+            </div>
         </main>
     </div>
 
     <script src="nav.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
